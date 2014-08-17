@@ -7,12 +7,12 @@ countMatches = (text, match) ->
 isRTL = (text) ->
     text = sanitizeText text
     count_rtl = countMatches text, '[\\u060C-\\u06FE\\uFB50-\\uFEFC]'
-    count_rtl * 100 / text.length > 20
+    count_rtl * 100 / text.length > 5
 
 isLTR = (text) ->
     text = sanitizeText text
-    count_ltr = countMatches text, '^[\\u060C-\\u06FE\\uFB50-\\uFEFC]'
-    count_ltr * 100 / text.length > 60
+    count_ltr = countMatches text, '[^\\u060C-\\u06FE\\uFB50-\\uFEFC]'
+    count_ltr * 100 / text.length > 80
 
 guessDir = (text, fallback='ltr') ->
     return 'rtl' if isRTL text
