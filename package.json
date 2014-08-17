@@ -2,7 +2,7 @@
   "name": "pipelog-auto-dir",
   "version": "0.0.0",
   "description": "Pipelog plugin, detects and sets text direction on code blocks and paragraphs.",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "test": "node test"
   },
