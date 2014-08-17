@@ -1,9 +1,11 @@
 through2 = require 'through2'
-{ isRTL } = require './utils'
+{ isRTL, guessDir } = require './utils'
 
-module.exports = (options) ->
+module.exports = (options = { fallback: 'ltr' }) ->
     processFile = (file, enc, done) ->
         { $ } = file
+        { fallback } = options
+        total = rtl: 0, ltr: 0
 
         $('code').each (i, el) ->
             $el = $(el)
@@ -18,6 +20,18 @@ module.exports = (options) ->
                 $comment = $(comment)
                 $comment.attr 'dir', 'rtl' if isRTL $comment.text()
 
+        getTextDir = (i, el) ->
+            $el = $ el
+            $clone = $el.clone()
+            text = $clone.remove('pre, code').text().trim() || $clone.text()
+            console.log text
+            dir = guessDir text, fallback
+            console.log dir
+            $el.attr 'dir', dir if dir isnt fallback
+            total[dir] += 1
+
+        $('h1, h2, h3, h4, h5, h6, p, ul').each getTextDir
+        file.dir = total.rtl > total.ltr ? 'rtl' : fallback
 
         file.contents = new Buffer $.html()
         done null, file
