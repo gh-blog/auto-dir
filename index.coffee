@@ -1,5 +1,5 @@
 through2 = require 'through2'
-{ isRTL } = require '../utils'
+{ isRTL } = require './utils'
 
 module.exports = (options) ->
     processFile = (file, enc, done) ->
