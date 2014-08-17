@@ -24,9 +24,7 @@ module.exports = (options = { fallback: 'ltr' }) ->
             $el = $ el
             $clone = $el.clone()
             text = $clone.remove('pre, code').text().trim() || $clone.text()
-            console.log text
             dir = guessDir text, fallback
-            console.log dir
             $el.attr 'dir', dir if dir isnt fallback
             total[dir] += 1
 
