@@ -29,7 +29,7 @@ module.exports = (options = { fallback: 'ltr' }) ->
             total[dir] += 1
 
         $('h1, h2, h3, h4, h5, h6, p, ul').each getTextDir
-        file.dir = total.rtl > total.ltr ? 'rtl' : fallback
+        file.dir = if total.rtl > total.ltr then 'rtl' else fallback
 
         file.contents = new Buffer $.html()
         done null, file
