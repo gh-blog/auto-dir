@@ -14,7 +14,7 @@ isLTR = (text) ->
     count_ltr = countMatches text, '[^\\u060C-\\u06FE\\uFB50-\\uFEFC]'
     count_ltr * 100 / text.length > 80
 
-guessDir = (text, fallback='ltr') ->
+guessDir = (text, fallback = 'ltr') ->
     return 'rtl' if isRTL text
     return 'ltr' if isLTR text
     return fallback
