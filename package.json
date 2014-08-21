@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/gh-blog/gh-blog-auto-dir/issues"
   },
-  "homepage": "https://github.com/gh-blog/gh-blog-auto-dir"
+  "homepage": "https://github.com/gh-blog/gh-blog-auto-dir",
+  "dependencies": {
+    "through2": "^0.6.1"
+  }
 }
