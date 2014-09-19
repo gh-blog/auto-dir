@@ -1,6 +1,6 @@
 {
   "name": "gh-blog-auto-dir",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "gh-blog plugin, detects and sets text direction on code blocks and paragraphs.",
   "main": "index.coffee",
   "scripts": {
